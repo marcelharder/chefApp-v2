@@ -8,6 +8,8 @@ import { HospitalService } from '../_services/hospital.service';
 import { UserService } from '../_services/user.service';
 import { User } from '../_models/User';
 import { Hospital } from '../_models/Hospital';
+import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { CommonService, toastPayload } from '../_services/common.service';
 
 @Component({
     selector: 'app-nav',
@@ -16,13 +18,15 @@ import { Hospital } from '../_models/Hospital';
 })
 export class NavMenuComponent implements OnInit {
   model: loginModel = {username:'',password:''};
+  toast!: toastPayload;
   currentRole = '';
   reg = 0;
   currentUserId = 0;
   currentRoles:Array<string> = [];
 
   constructor(
-    public accountService: AccountService, 
+    public accountService: AccountService,
+    private cs: CommonService, 
     private router: Router,
     private hospitalService: HospitalService,
     private userService: UserService) { }
@@ -41,10 +45,21 @@ export class NavMenuComponent implements OnInit {
   login(){this.accountService.login(this.model).subscribe((next)=>{
 
     this.accountService.currentUser$.pipe(take(1)).subscribe((u) => { 
-      if(u !== null){
+
+      if(u !== null ){
         this.currentUserId = u.UserId;
         this.model.username = u.Username;
-        this.currentRoles = u.roles;
+        this.currentRoles = u.roles; 
+        this.toast = {
+          message: "Successfully logged in ",
+          title: "Login",
+          type: 'success',
+          ic: {
+            timeOut:2500,
+            closeButton: true
+          } as IndividualConfig
+        };
+        this.cs.showToast(this.toast);
       }
      
     })
@@ -59,6 +74,16 @@ export class NavMenuComponent implements OnInit {
      }
      console.log(next); }, (error)=>{if(error.status === 401){
        this.reg = 1;
+       this.toast = {
+        message: "Not Authorized ",
+        title: "Login",
+        type: 'error',
+        ic: {
+          timeOut:2500,
+          closeButton: true
+        } as IndividualConfig
+      };
+      this.cs.showToast(this.toast);
       
       
       }})}
@@ -67,6 +92,16 @@ export class NavMenuComponent implements OnInit {
     this.model.username = "";
     this.model.password = "";
     this.accountService.logout();
+    this.toast = {
+      message: "Successfully logged out ",
+      title: "Logout",
+      type: 'success',
+      ic: {
+        timeOut:2500,
+        closeButton: true
+      } as IndividualConfig
+    };
+    this.cs.showToast(this.toast);
     this.router.navigate(['/']) }
 
 }

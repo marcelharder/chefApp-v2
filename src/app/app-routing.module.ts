@@ -7,7 +7,7 @@ import { ListTraineesComponent } from './listTrainees/listTrainees.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   {
     path: '',
