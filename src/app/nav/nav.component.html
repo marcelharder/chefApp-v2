@@ -8,7 +8,7 @@
               
        
 
-     
+        
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" > 
             <a class="nav-link text-dark" [routerLink]="['/home']">Home</a> 
@@ -24,6 +24,47 @@
             <a class="nav-link text-dark" [routerLink]="['/about']">About</a> 
           </li>
           <li class="nav-item"  > 
+
+            <div class="dropdown" *ngIf="accountService.currentUser$ |async" dropdown>
+              <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{model.username | titlecase}}</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+
+            <form *ngIf="(accountService.currentUser$ |async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0"
+            (ngSubmit)="login()" autocomplete="off">
+            <div class="d-flex flex-row">
+              <div class="p-2"> <input class="form-control mr-sm-2" name="username" type="text" placeholder="Username"
+                [(ngModel)]="model.username"></div>
+              <div class="p-2"> <input class="form-control mr-sm-2" name="password" type="password" placeholder="Password"
+                [(ngModel)]="model.password"></div>
+              <div class="p-2"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></div>
+              <div class="p-2"><button class="btn btn-outline-warning my-2 my-sm-0 ml-1" type="button" (click)="RegisterNewClient()">Register</button></div>
+            </div>
+              
+           
+            
+
+          </form>
+          </li>
+
+
+
+
+
+
+        </ul>
+       
+
+        
+        <!--   <div class="dropdown" *ngIf="accountService.currentUser$ |async" dropdown>
+            <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{model.username | titlecase}}</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        
+
+
+
+
           
             <form *ngIf="(accountService.currentUser$ |async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0"
               (ngSubmit)="login()" autocomplete="off">
@@ -35,20 +76,17 @@
                 <div class="p-2"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></div>
                 <div class="p-2"><button class="btn btn-outline-warning my-2 my-sm-0 ml-1" type="button" (click)="RegisterNewClient()">Register</button></div>
               </div>
-             
-             
+                
              
               
 
-            </form>
-        
+            </form> -->
+             
           
-          </li>
 
 
 
-        </ul>
-
+       
 
 
       </div>

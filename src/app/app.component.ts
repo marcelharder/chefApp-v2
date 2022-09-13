@@ -16,7 +16,6 @@ export class AppComponent {
   buttonClick(type: string){
     this.toast = {
       message: `Hallo `,
-      
       title: 'Title text',
       type: type,
       ic: {
