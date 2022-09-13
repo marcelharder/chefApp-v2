@@ -1,0 +1,57 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-1"
+  >
+    <div class="container">
+     
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" >
+              
+       
+
+     
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" > 
+            <a class="nav-link text-dark" [routerLink]="['/home']">Home</a> 
+         </li>
+          <li class="nav-item"> 
+            <a class="nav-link text-dark" [routerLink]="['/listOfRegistries']">List of Procedures</a> 
+          </li>
+          <li class="nav-item" > 
+            <a class="nav-link text-dark" [routerLink]="['/']">List of Trainees </a> 
+          </li>
+          
+          <li class="nav-item"  > 
+            <a class="nav-link text-dark" [routerLink]="['/about']">About</a> 
+          </li>
+          <li class="nav-item"  > 
+          
+            <form *ngIf="(accountService.currentUser$ |async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0"
+              (ngSubmit)="login()" autocomplete="off">
+              <div class="d-flex flex-row">
+                <div class="p-2"> <input class="form-control mr-sm-2" name="username" type="text" placeholder="Username"
+                  [(ngModel)]="model.username"></div>
+                <div class="p-2"> <input class="form-control mr-sm-2" name="password" type="password" placeholder="Password"
+                  [(ngModel)]="model.password"></div>
+                <div class="p-2"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></div>
+                <div class="p-2"><button class="btn btn-outline-warning my-2 my-sm-0 ml-1" type="button" (click)="RegisterNewClient()">Register</button></div>
+              </div>
+             
+             
+             
+              
+
+            </form>
+        
+          
+          </li>
+
+
+
+        </ul>
+
+
+
+      </div>
+    </div>
+  </nav>
+</header>
