@@ -14,14 +14,14 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
          </li>
           <li class="nav-item"   *ngIf="accountService.currentUser$ |async"> 
-            <a class="nav-link text-dark" [routerLink]="['/listProcedures']">List of Procedures</a> 
+            <a class="nav-link text-dark" [routerLink]="['/listProcedures']">| List of Procedures</a> 
           </li>
           <li class="nav-item"   *ngIf="accountService.currentUser$ |async"> 
-            <a class="nav-link text-dark" [routerLink]="['/listTrainees']">List of Trainees </a> 
+            <a class="nav-link text-dark" [routerLink]="['/listTrainees']">| List of Trainees </a> 
           </li>
           
           <li class="nav-item"  > 
-            <a class="nav-link text-dark" [routerLink]="['/about']">About</a> 
+            <a class="nav-link text-dark" [routerLink]="['/about']">| About</a> 
           </li>
           <li class="nav-item"  > 
 

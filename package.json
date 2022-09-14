@@ -23,6 +23,7 @@
     "fs-admin": "^0.20.0",
     "jquery": "^3.6.1",
     "moment": "^2.29.3",
+    "ngx-bootstrap": "^9.0.0",
     "ngx-toastr": "^15.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",

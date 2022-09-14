@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ListProceduresComponent } from './listProcedures/listProcedures.component';
 import { ListTraineesComponent } from './listTrainees/listTrainees.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ProcedureListResolver } from './_resolvers/procedure-list.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
     children: [
 
       { path: 'listTrainees', component: ListTraineesComponent },
-      { path: 'listProcedures', component: ListProceduresComponent },
+      { path: 'listProcedures', component: ListProceduresComponent, resolve: {proc: ProcedureListResolver} },
     ]
   },
   { path: '**', component: HomeComponent, pathMatch: 'full' }
