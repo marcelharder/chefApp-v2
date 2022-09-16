@@ -22,6 +22,8 @@ import { CommonService } from './_services/common.service';
 import { HospitalService } from './_services/hospital.service';
 import { ProcedureService } from './_services/procedure.service';
 import { UserService } from './_services/user.service';
+import { TraineeListResolver } from './_resolvers/trainee_list.resolver';
+import { UsercardComponent } from './usercard/usercard.component';
 
 
 @NgModule({
@@ -35,16 +37,15 @@ import { UserService } from './_services/user.service';
     PaginationModule,
     ToastrModule.forRoot({positionClass:'toast-bottom-right'}),
    ],
-  declarations: [
+  declarations: [	
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     AboutComponent,
     ListTraineesComponent,
     ListProceduresComponent,
-    
-   
-  ],
+      UsercardComponent
+   ],
   providers: [
     AccountService,
     CommonService,
@@ -52,6 +53,7 @@ import { UserService } from './_services/user.service';
     ProcedureService,
     UserService,
     AuthGuard, 
+    TraineeListResolver,
     ProcedureListResolver],
   bootstrap: [AppComponent]
 })

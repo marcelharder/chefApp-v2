@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://172.24.0.4/api/'
+  apiUrl: 'http://172.18.0.5/api/'
   //apiUrl: 'tracPersonal/api/'
 };
